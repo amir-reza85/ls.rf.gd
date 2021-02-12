@@ -1,0 +1,281 @@
+<!DOCTYPE html> 
+<html> 
+    <title> Ls.Rf.Gd Link Shortener </title>
+    <br> <br> <br> <br>
+    <center> <textarea id='link' placeholder="Input Url" col="10" row="10"></textarea> </center>
+    <br> <br> <br> <br>
+    <center> <button onclick="shorten()" > <h4> Short Url </h4> </button> </center>
+    <br> <br> <br> <br>
+    <center> <p id='p'></p> </center>
+    <script>
+        function isValidURL(str) {
+   var a  = document.createElement('a');
+   a.href = str;
+   return (a.host && a.host != window.location.host);
+}
+    function createCookie(name, value, days) {
+  var expires;
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toGMTString();
+  }
+  else {
+    expires = "";
+  }
+  document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
+}
+var a = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1'
+, '2', '3', '4', '5', '6', '7', '8', '9']
+var f = 0
+var x = ""
+var s = window.location.href
+for (var i = 0; i < s.length; i++) {
+    if (f == 1) {
+        x += s[i]
+        if (!a.includes(s[i])) {
+            f = 0
+        }
+    }
+    if (s[i] == '?') {
+        f = 1;
+    }
+}
+if (f == 1 && x !== "" && x.length == 5) {
+    document.getElementById('p').innerHTML = ' <h4> Your Short Url : <a id="c" href="http://ls.rf.gd/' + x + '">ls.rf.gd/' + x + '</a> </h4> <button onclick="copy()" id="b"> Copy link </button>'
+}
+function copy() {
+    window.getSelection().selectAllChildren(document.getElementById("c"));
+    document.execCommand("Copy");
+    document.getElementById('b').innerHTML = 'Copied!'
+} 
+        function shorten() {
+            var link = ""
+            a = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1'
+, '2', '3', '4', '5', '6', '7', '8', '9']
+            var test = 10;
+            for (var i = 0; i < 5; i++) {
+                link += a[Math.floor(Math.random() * 36)]
+                for (var j = 0; j < 10; j++) {
+                    test = Math.random()
+                }
+            }
+            var body = document.getElementById('link').value;
+            if (isValidURL(body)) {
+
+            }else {
+                alert('url not valid')
+                return;
+            }
+              createCookie("body", body, 1);
+window.location.replace("create.php?link=" + link);
+        }
+    </script>
+    <style>
+        *{
+            background-color: black;
+            color: white;
+        }
+        @import url(https://fonts.googleapis.com/css?family=Sniglet|Raleway:900);
+
+
+body, html{
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	font-family: 'Sniglet', cursive;
+}
+h1{
+	font-weight: normal;
+	font-size: 4em;
+	font-family: 'Raleway', sans-serif;
+	margin: 0 auto;
+	margin-top: 30px;
+	width: 500px;
+	color: #F90;
+	text-align: center;
+
+}
+
+/* Animation webkit */
+@-webkit-keyframes myfirst
+{
+	0% {margin-left: -235px}
+	90% {margin-left: 100%;}
+	100% {margin-left: 100%;}
+}
+
+/* Animation */
+@keyframes myfirst
+{
+	0% {margin-left: -235px}
+	70% {margin-left: 100%;}
+	100% {margin-left: 100%;}
+}
+
+.fish{
+	background-image: url('http://www.geertjanhendriks.nl/codepen/form/fish.png');
+	width: 235px;
+	height: 104px;
+	margin-left: -235px;
+	position: absolute;	
+	animation: myfirst 24s;
+	-webkit-animation: myfirst 24s;
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	-webkit-animation-timing-function: linear;
+}
+
+#fish{
+	top: 120px;
+}
+
+#fish2{
+	top: 260px;
+	animation-delay: 12s;
+	-webkit-animation-delay: 12s;
+}
+
+
+header{
+	height: 160px;
+	background: url('http://www.geertjanhendriks.nl/codepen/form/golf.png') repeat-x bottom;
+}
+
+#form{
+	height: 100%;	
+	background-color: #98d4f3;
+	overflow: hidden;
+	position: relative;
+	
+}
+form{
+	margin: 0 auto;
+	width: 500px;
+	padding-top: 40px;
+	color: white;
+	position: relative;
+	
+	
+}
+label, input, textarea{
+	display: block;	
+}
+button {
+    border-radius: 12px;
+    width: 120px;
+    height: 70px;
+    font-family: 'Sniglet', cursive;
+}
+input, textarea{
+	width: 500px;	
+	border: none;
+	border-radius: 20px;
+	outline: none;
+	padding: 10px;
+	font-family: 'Sniglet', cursive;
+	font-size: 1em;
+	color: #676767;
+	transition: border 0.5s;
+	-webkit-transition: border 0.5s;
+	-moz-transition: border 0.5s;
+	-o-transition: border 0.5s;
+	border: solid 3px #98d4f3;	
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	
+}
+input:focus, textarea:focus{
+	border: solid 3px #77bde0;	
+}
+
+textarea{
+	height: 100px;	
+	resize: none; 
+	overflow: auto;
+}
+input[type="submit"]{
+	background-color: #F90;
+	color: white;
+	height: 50px;
+	cursor: pointer;
+	margin-top: 30px;
+	font-size: 1.29em;
+	font-family: 'Sniglet', cursive;
+	-webkit-transition: background-color 0.5s;
+	-moz-transition: background-color 0.5s;
+	-o-transition: background-color 0.5s;
+	transition: background-color 0.5s;
+}
+input[type="submit"]:hover{
+	background-color: #e58f0e;
+	
+}
+label{
+	font-size: 1.5em;
+	margin-top: 20px;
+	padding-left: 20px;
+}
+.formgroup, .formgroup-active, .formgroup-error{
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	background-size: 10.5%;
+	transition: background-image 0.7s;
+	-webkit-transition: background-image 0.7s;
+	-moz-transition: background-image 0.7s;
+	-o-transition: background-image 0.7s;
+	width: 566px;
+	padding-top: 2px;
+}
+
+.formgroup{
+	background-image: url('http://www.geertjanhendriks.nl/codepen/form/pixel.gif');	
+}
+.formgroup-active{
+	background-image: url('http://www.geertjanhendriks.nl/codepen/form/octo.png');
+}
+.formgroup-error{
+	background-image: url('http://www.geertjanhendriks.nl/codepen/form/octo-error.png');
+	color: red;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+    </stle>
+</html>
